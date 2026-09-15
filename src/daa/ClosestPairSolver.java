@@ -19,7 +19,7 @@ public class ClosestPairSolver {
     public double solve(Point[] points) {
         distanceChecks = 0;
         maxDepth = 0;
-        if (points.length < 2) {
+        if (points == null || points.length < 2) {
             return Double.POSITIVE_INFINITY;
         }
         Point[] byX = points.clone();
@@ -100,6 +100,9 @@ public class ClosestPairSolver {
     /** O(n^2) reference solution, used for testing and comparison. */
     public static double bruteForce(Point[] points) {
         double best = Double.POSITIVE_INFINITY;
+        if (points == null) {
+            return best;
+        }
         for (int i = 0; i < points.length; i++) {
             for (int j = i + 1; j < points.length; j++) {
                 best = Math.min(best, points[i].distanceTo(points[j]));

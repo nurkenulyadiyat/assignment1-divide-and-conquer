@@ -1,6 +1,7 @@
 package daa;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -53,5 +54,13 @@ class DeterministicSelectorTest {
     @Test
     void singleElement() {
         assertEquals(7, selector.select(new int[]{7}, 0));
+    }
+
+    @Test
+    void invalidArguments() {
+        assertThrows(IllegalArgumentException.class, () -> selector.select(new int[0], 0));
+        assertThrows(IllegalArgumentException.class, () -> selector.select(null, 0));
+        assertThrows(IllegalArgumentException.class, () -> selector.select(new int[]{1, 2}, 2));
+        assertThrows(IllegalArgumentException.class, () -> selector.select(new int[]{1, 2}, -1));
     }
 }

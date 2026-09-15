@@ -17,6 +17,12 @@ public class DeterministicSelector {
      * The array is reordered in place; pass a copy if the order matters.
      */
     public int select(int[] a, int k) {
+        if (a == null || a.length == 0) {
+            throw new IllegalArgumentException("array is empty");
+        }
+        if (k < 0 || k >= a.length) {
+            throw new IllegalArgumentException("k out of range: " + k);
+        }
         comparisons = 0;
         maxDepth = 0;
         return select(a, 0, a.length - 1, k, 1);

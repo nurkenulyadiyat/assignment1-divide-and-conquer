@@ -52,6 +52,7 @@ class ClosestPairSolverTest {
     void fewerThanTwoPoints() {
         assertEquals(Double.POSITIVE_INFINITY, solver.solve(new Point[0]));
         assertEquals(Double.POSITIVE_INFINITY, solver.solve(new Point[]{new Point(0, 0)}));
+        assertEquals(Double.POSITIVE_INFINITY, solver.solve(null));
     }
 
     @Test

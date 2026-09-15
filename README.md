@@ -64,34 +64,34 @@ only with the next points whose y-difference is < d (at most 7 of them).
 
 ## C. Experimental Results
 
-Environment: OpenJDK 21, Linux x86-64. Full data: `results/results.csv`.
+Measured on my laptop (Windows, run from IntelliJ IDEA). Full data: `results/results.csv`.
 
 ### Execution time, ms (random input)
 
 | n | MergeSort | QuickSort | DeterministicSelect | ClosestPair |
 |---:|---:|---:|---:|---:|
-| 1,000 | 0.021 | 0.056 | 0.014 | 0.151 |
-| 2,000 | 0.073 | 0.121 | 0.042 | 1.019 |
-| 5,000 | 0.260 | 0.329 | 0.129 | 2.316 |
-| 10,000 | 0.583 | 0.763 | 0.272 | 2.201 |
-| 20,000 | 1.272 | 1.479 | 0.540 | 4.766 |
-| 50,000 | 4.091 | 4.715 | 1.767 | 16.6 |
-| 100,000 | 9.202 | 10.5 | 3.437 | 38.6 |
-| 200,000 | 16.0 | 17.9 | 5.474 | 68.7 |
-| 500,000 | 43.2 | 47.6 | 14.0 | 202.1 |
-| 1,000,000 | 91.0 | 101.6 | 28.2 | 557.0 |
+| 1,000 | 0.033 | 0.060 | 0.026 | 0.216 |
+| 2,000 | 0.081 | 0.131 | 0.056 | 0.541 |
+| 5,000 | 0.251 | 0.335 | 0.140 | 1.462 |
+| 10,000 | 0.553 | 0.721 | 0.303 | 3.929 |
+| 20,000 | 1.134 | 1.541 | 0.612 | 6.091 |
+| 50,000 | 3.008 | 4.014 | 1.433 | 18.4 |
+| 100,000 | 6.666 | 8.762 | 2.840 | 36.5 |
+| 200,000 | 14.0 | 19.2 | 5.730 | 77.8 |
+| 500,000 | 38.0 | 49.4 | 14.1 | 262.2 |
+| 1,000,000 | 78.8 | 103.1 | 30.3 | 569.2 |
 
 ### Recursion depth (random input)
 
 | n | log2(n) | MergeSort | QuickSort | DeterministicSelect | ClosestPair |
 |---:|---:|---:|---:|---:|---:|
 | 1,000 | 10.0 | 7 | 8 | 5 | 10 |
-| 2,000 | 11.0 | 8 | 8 | 5 | 11 |
-| 5,000 | 12.3 | 10 | 9 | 6 | 12 |
-| 10,000 | 13.3 | 11 | 9 | 6 | 13 |
+| 2,000 | 11.0 | 8 | 9 | 5 | 11 |
+| 5,000 | 12.3 | 10 | 10 | 6 | 12 |
+| 10,000 | 13.3 | 11 | 10 | 6 | 13 |
 | 20,000 | 14.3 | 12 | 11 | 7 | 14 |
 | 50,000 | 15.6 | 13 | 12 | 7 | 16 |
-| 100,000 | 16.6 | 14 | 12 | 8 | 17 |
+| 100,000 | 16.6 | 14 | 13 | 8 | 17 |
 | 200,000 | 17.6 | 15 | 13 | 8 | 18 |
 | 500,000 | 18.9 | 16 | 14 | 9 | 19 |
 | 1,000,000 | 19.9 | 17 | 15 | 9 | 20 |
@@ -100,18 +100,18 @@ Environment: OpenJDK 21, Linux x86-64. Full data: `results/results.csv`.
 
 | Size | n | Input type | MergeSort | QuickSort | DeterministicSelect |
 |---|---:|---|---:|---:|---:|
-| small | 1,000 | random | 0.021 / 7 | 0.056 / 8 | 0.014 / 5 |
-| small | 1,000 | sorted | 0.006 / 7 | 0.037 / 8 | 0.014 / 5 |
-| small | 1,000 | reverse | 0.014 / 7 | 0.037 / 8 | 0.011 / 5 |
-| small | 1,000 | duplicates | 0.016 / 7 | 0.013 / 4 | 0.004 / 5 |
-| medium | 20,000 | random | 1.272 / 12 | 1.479 / 11 | 0.540 / 7 |
-| medium | 20,000 | sorted | 0.196 / 12 | 0.872 / 10 | 0.256 / 7 |
-| medium | 20,000 | reverse | 0.356 / 12 | 0.813 / 11 | 0.295 / 7 |
-| medium | 20,000 | duplicates | 0.684 / 12 | 0.269 / 4 | 0.408 / 7 |
-| large | 1,000,000 | random | 91.0 / 17 | 101.6 / 15 | 28.2 / 9 |
-| large | 1,000,000 | sorted | 13.6 / 17 | 50.9 / 14 | 12.9 / 9 |
-| large | 1,000,000 | reverse | 30.1 / 17 | 52.4 / 14 | 14.0 / 9 |
-| large | 1,000,000 | duplicates | 42.5 / 17 | 13.1 / 3 | 13.1 / 9 |
+| small | 1,000 | random | 0.033 / 7 | 0.060 / 8 | 0.026 / 5 |
+| small | 1,000 | sorted | 0.009 / 7 | 0.043 / 8 | 0.016 / 5 |
+| small | 1,000 | reverse | 0.019 / 7 | 0.045 / 7 | 0.017 / 5 |
+| small | 1,000 | duplicates | 0.019 / 7 | 0.015 / 4 | 0.008 / 5 |
+| medium | 20,000 | random | 1.134 / 12 | 1.541 / 11 | 0.612 / 7 |
+| medium | 20,000 | sorted | 0.201 / 12 | 1.035 / 12 | 0.361 / 7 |
+| medium | 20,000 | reverse | 0.404 / 12 | 1.070 / 11 | 0.385 / 7 |
+| medium | 20,000 | duplicates | 0.653 / 12 | 0.303 / 4 | 0.538 / 7 |
+| large | 1,000,000 | random | 78.8 / 17 | 103.1 / 15 | 30.3 / 9 |
+| large | 1,000,000 | sorted | 14.4 / 17 | 68.2 / 14 | 15.8 / 9 |
+| large | 1,000,000 | reverse | 32.3 / 17 | 67.4 / 15 | 17.6 / 9 |
+| large | 1,000,000 | duplicates | 40.5 / 17 | 12.1 / 4 | 12.1 / 9 |
 
 ### Plots
 
@@ -129,9 +129,9 @@ and ≈ 10 · n for Select for all sizes from 1,000 to 1,000,000 (see `results.c
 On the time plot the lines grow almost linearly on the log–log scale. The recursion depth grows like log n.
 
 **How does input structure affect performance?**
-MergeSort is fastest on sorted input (13.6 ms vs 91.0 ms on random, n = 1,000,000) because merges stop early and
+MergeSort is fastest on sorted input (14.4 ms vs 78.8 ms on random, n = 1,000,000) because merges stop early and
 branches are predictable. QuickSort with a random pivot does not become O(n²) on sorted input. On duplicate-heavy input
-the 3-way partition removes all equal elements at once, so QuickSort is much faster (13.1 ms) and its depth is only 3.
+the 3-way partition removes all equal elements at once, so QuickSort is much faster (12.1 ms vs 103.1 ms) and its depth is only 4.
 
 **Why does smaller-first recursion help QuickSort?**
 The recursive call always gets the smaller part (≤ n/2 elements), so the stack depth is at most log2 n + 1 for any
@@ -143,8 +143,8 @@ The pivot always removes at least ≈ 30% of the elements. The two recursive siz
 geometric series n + 0.9n + 0.81n + … ≤ 10n.
 
 **Why is divide-and-conquer Closest Pair faster than O(n²) for large inputs?**
-Brute force compares all pairs: ≈ 200 million distance checks for n = 20,000 (≈ 360 ms). The divide-and-conquer
-version compares only neighbours in the strip, ≈ 26 thousand checks (≈ 5 ms). The gap grows with n.
+Brute force compares all pairs: ≈ 200 million distance checks for n = 20,000 (≈ 265 ms). The divide-and-conquer
+version compares only neighbours in the strip, ≈ 26 thousand checks (≈ 6 ms). The gap grows with n.
 
 **What practical factors affect performance?**
 JIT warm-up (first runs are slow, so warm-up runs are excluded), garbage collection pauses, CPU cache

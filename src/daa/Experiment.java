@@ -31,6 +31,7 @@ public class Experiment {
 
     public void runAll(Path csvFile) throws IOException {
         rows.clear();
+        warmUpJvm();
         for (int n : SIZES) {
             for (String type : INPUT_TYPES) {
                 int[] base = generateArray(n, type);
@@ -45,6 +46,24 @@ public class Experiment {
             }
         }
         save(csvFile);
+    }
+
+    /** Runs every algorithm a few times before measuring so that the JIT has compiled the hot code. */
+    private void warmUpJvm() {
+        MergeSorter merge = new MergeSorter();
+        QuickSorter quick = new QuickSorter();
+        DeterministicSelector selector = new DeterministicSelector();
+        ClosestPairSolver solver = new ClosestPairSolver();
+        for (int i = 0; i < 10; i++) {
+            for (String type : INPUT_TYPES) {
+                int[] a = generateArray(50_000, type);
+                merge.sort(a.clone());
+                quick.sort(a.clone());
+                selector.select(a.clone(), a.length / 2);
+            }
+            solver.solve(generatePoints(50_000));
+            ClosestPairSolver.bruteForce(generatePoints(2_000));
+        }
     }
 
     private Result measureMergeSort(int[] base) {
